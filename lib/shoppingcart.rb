@@ -37,11 +37,15 @@ class ShoppingCart
   end
 
   def percentage_occupied
-    (@products.sum do |product|
+    ((@products.sum do |product|
       product.quantity
-    end) / @capacity
+    end).to_f / @capacity) * 100
   end
 
-  
+  def sorted_products_by_quantity
+    @products.sort_by do |product|
+      product.quantity
+    end
+  end
 
 end
