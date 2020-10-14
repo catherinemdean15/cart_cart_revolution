@@ -30,11 +30,18 @@ class ProductTest < Minitest::Test
   end
 
   def test_it_can_get_total_price
-    skip
     product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     product2 = Product.new(:meat, 'chicken', 4.50, '2')
 
     assert_equal 37.0, product1.total_price
     assert_equal 9.0, product2.total_price
+  end
+
+  def test_it_checks_if_hoarded
+    product = Product.new(:paper, 'toilet paper', 3.70, '10')
+    refute product.is_hoarded?
+    product.hoard
+    assert product.is_hoarded?
+
   end
 end
