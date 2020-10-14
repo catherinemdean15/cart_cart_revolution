@@ -8,10 +8,17 @@ class ShoppingCart
     @name = name
     @capacity = capacity.to_i
     @products = []
+    @details = nil
   end
 
   def add_product(product)
     @products << product
   end
-  
+
+  def details
+    @details = {
+      name: @name,
+      capacity: @capacity
+    }
+  end 
 end
