@@ -17,5 +17,13 @@ class Product
   def total_price
     @unit_price * quantity
   end
-  
+
+  def is_hoarded?
+    quantity > 99
+  end
+
+  def hoard
+    @quantity = 100
+  end
+
 end
