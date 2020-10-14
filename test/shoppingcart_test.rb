@@ -32,9 +32,13 @@ class ShoppingCartTest < Minitest::Test
     assert_equal [@product1, @product2], @cart.products
   end
 
-  # def test_it_shows_details
-  #   assert_equal details, @cart.details
-  # end
+  def test_it_shows_details
+    hash = {
+        name: "King Soopers",
+        capacity: 30
+    }
+    assert_equal hash, @cart.details
+  end
 
   def test_if_cart_is_full
     @cart.add_product(@product1)
@@ -68,4 +72,17 @@ class ShoppingCartTest < Minitest::Test
     assert_equal [@product3,@product2, @product1, @product4], @cart.sorted_products_by_quantity
   end
 
+  def test_it_shows_product_breakdown
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    @cart.add_product(@product4)
+    hash = {
+      meat: [@product2],
+      paper: [@product1, @product3],
+      produce: [@product4]
+    }
+    assert_equal hash, @cart.product_breakdown
+  end
+  
 end
