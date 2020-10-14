@@ -1,3 +1,5 @@
+require './lib/shoppingcart'
+
 class ShoppingCart
   attr_reader :name,
               :capacity,
@@ -20,5 +22,18 @@ class ShoppingCart
       name: @name,
       capacity: @capacity
     }
-  end 
+  end
+
+  def is_full?
+    (@products.sum do |product|
+      product.quantity
+    end) > @capacity
+  end
+
+  def products_by_category(category)
+    @products.find_all do |product|
+      product.category == category
+    end
+  end
+
 end
