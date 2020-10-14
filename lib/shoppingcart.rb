@@ -36,4 +36,12 @@ class ShoppingCart
     end
   end
 
+  def percentage_occupied
+    (@products.sum do |product|
+      product.quantity
+    end) / @capacity
+  end
+
+  
+
 end
